@@ -13,9 +13,9 @@ spec:
 
 ```
 - **apiVersion:** Oluşturacağımız objenin Kubernetes içinde hangi api versiyonunda tanımlandığını gösterir. "kubectl explain {obje_adı}" komutu ile bu bilgiye ulaşabiliriz.
-- **kind:** Oluşturacağımız objenin ne onjesi olduğunu tanımladığımız yerdir.
+- **kind:** Oluşturacağımız objenin ne objesi olduğunu tanımladığımız yerdir.
 - **metadata:** Obje ile ilgili unique bilgleri tanımladığımız yerdir. (name, labels, annotations vs.)
-- **metadata:** Her obje tipine göre tanımlayacağımız farklı özellikleri barındırır. 
+- **spec:** Her obje tipine göre tanımlayacağımız farklı özellikleri barındırır. 
 
 
 Örnek biir YAML dosyası:
