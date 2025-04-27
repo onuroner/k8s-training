@@ -35,3 +35,14 @@ spec:
 Yukarıda tanımlanan Service nesnesi `app: frontend` etiketine sahip tüm Pod'ları otomatik olarak tespit eder ve bunlara erişim sağlar. Kubernetes cluster içindeki diğer Pod ve servisler, `frontend-svc` adını kullanarak (veya tam DNS adı ile frontend-svc.default.svc.cluster.local) bu servise erişebilir. Servis, 80 numaralı port üzerinden gelen istekleri, hedef Pod'ların 5000 numaralı portuna yönlendirir. Service tipi belirtilmediği için varsayılan olarak `ClusterIP` tipi kullanılır, yani bu servis sadece cluster içerisinden erişilebilir.
 
 ### Service Türleri
+
+- **ClusterIP:** Varsayılan Service türüdür. Bu tipteki bir Service, ClusterIP olarak bilinen bir sanal IP adresi alır. Bu sanal IP adresi Service ile iletişim kurmak için kullanılır ve **yalnızca cluster içinden** erişilebilir. Eğer Service tanımı oluştururken herhangi bir tip tanımı yapılmazsa, Service otomatik olarak ClusterIP tipinde üretilecektir.
+
+- **NodePort:** NodePort, Service'lerimizi dış dünyadan erişilebilir kılmak istediğimizde kullanışlıdır. Son kullanıcı, belirtilen porttaki herhangi bir worker node'una bağlanır, bu da isteği dahili olarak Service'in ClusterIP'sine proxy'ler, ardından istek cluster içinde çalışan uygulamalara iletilir.
+
+![NodePort](https://github.com/onuroner/k8s-training/blob/main/images/nodeport.png?raw=true)
+
+- **Load Balancer:** Bu servis, uygulamaların yük dengeleme yapması gerektiğinde kullanılır. LoadBalancer servisi, bir IP adresi ve ilgili Pod grubuyla eşleştirilir ve gelen trafiği yönlendirmek için bir yük dengeleyici kullanır. Varsayılan olarak Round Robin algoritmasını kullanır. Bu Servis, ağ dışından Pod’lara erişim sağlamak için kullanılabilir.
+
+*LoadBalancer tipinden bir servis oluşturulduğu zaman NodePort ve ClusterIP servisleri otomatik olarak oluşturulur.*
+
