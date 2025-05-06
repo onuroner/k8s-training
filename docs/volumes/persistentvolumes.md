@@ -53,4 +53,5 @@ spec:
     requests:
       storage: 5Gi
 ```
+![Persistent Volume Claims](https://github.com/onuroner/k8s-training/blob/main/images/PersistentVolumeClaimUsedInaPod.png?raw=true)
 
